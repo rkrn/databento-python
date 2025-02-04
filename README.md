@@ -28,7 +28,6 @@ You can find our full client API reference on the [Historical Reference](https:/
 [Examples](https://databento.com/docs/examples?historical=python&live=python) section for various tutorials and code samples.
 
 ## Requirements
-The library is fully compatible with the latest distribution of Anaconda 3.9 and above.
 The minimum dependencies as found in the `pyproject.toml` are also listed below:
 - python = "^3.9"
 - aiohttp = "^3.8.3"
@@ -39,6 +38,8 @@ The minimum dependencies as found in the `pyproject.toml` are also listed below:
 - pyarrow = ">=13.0.0"
 - requests = ">=2.25.1"
 - zstandard = ">=0.21.0"
+
+The library is fully compatible with the latest distribution of Anaconda 3.9 and above.
 
 ## Installation
 To install the latest stable version of the package from PyPI:
@@ -56,13 +57,13 @@ A simple Databento application looks like this:
 ```python
 import databento as db
 
-client = db.Historical('YOUR_API_KEY')
+client = db.Historical("YOUR_API_KEY")
 data = client.timeseries.get_range(
-    dataset='GLBX.MDP3',
-    symbols='ES.FUT',
-    stype_in='parent',
-    start='2022-06-10T14:30',
-    end='2022-06-10T14:40',
+    dataset="GLBX.MDP3",
+    symbols=["ES.FUT", "NQ.FUT"],
+    stype_in="parent",
+    start="2022-06-10T14:30",
+    end="2022-06-10T14:40",
 )
 
 data.replay(callback=print)  # market replay, with `print` as event handler
